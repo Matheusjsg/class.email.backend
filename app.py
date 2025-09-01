@@ -19,6 +19,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+async def root():
+    return {"message": "Backend funcionando!"}
+
 @app.post("/process")
 async def process_email(email: EmailText):
     grupo, categoria, resposta = classify_email_ai(email.text)
